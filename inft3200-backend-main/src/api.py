@@ -15,11 +15,19 @@ def get_db_connection():
     """
     Returns a new connection to the PostgreSQL database.
     """
-    conn = psycopg2.connect(
+    """ conn = psycopg2.connect(
         host=os.getenv('DB_HOST'),
         database=os.getenv('DB_NAME'),
         user=os.getenv('DB_USER'),
         password=os.getenv('DB_PASS')
+    )
+    return conn """
+
+    conn = psycopg2.connect(
+        host='database-1.czqii6ueqeu1.us-east-1.rds.amazonaws.com',
+        database='postgres',
+        user='postgres',
+        password='![D9|Aru?U.asN#pNe6vsUzqjSM1'
     )
     return conn
 
