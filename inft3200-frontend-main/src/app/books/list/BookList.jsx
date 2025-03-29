@@ -17,7 +17,7 @@ export default function BookListPage() {
   const fetchBooks = async () => {
     try {
       const response = await fetch(
-        `/api/books`, // Use relative path to leverage the ALB
+        `http://127.0.0.1:8080/books`,
         { cache: 'no-store' }
       );
       if (!response.ok) {
