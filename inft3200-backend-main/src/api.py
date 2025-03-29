@@ -1,4 +1,4 @@
-from flask import Flask, request, jsonify
+from flask import Flask, request, jsonify, Blueprint
 from flask_cors import CORS
 from dotenv import load_dotenv
 import os
@@ -10,6 +10,7 @@ app = Flask(__name__)
 CORS(app)
 load_dotenv()
 
+api_bp = Blueprint('api', __name__, url_prefix='/api')
 
 def get_db_connection():
     """
@@ -174,6 +175,10 @@ def add_book():
     finally:
         cursor.close()
         conn.close()
+
+
+app.register_blueprint(api_bp)
+
 
 if __name__ == '__main__':
     from waitress import serve
