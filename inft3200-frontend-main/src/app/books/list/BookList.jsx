@@ -51,7 +51,7 @@ export default function BookListPage() {
   const handleUpdateClick = async (isbn) => {
     const bookToUpdate = books.find((b) => b.isbn === isbn);
     if (!bookToUpdate) return;
-
+ 
     try {
       const response = await fetch(
         `http://${process.env.NEXT_PUBLIC_API_URL}:${process.env.NEXT_PUBLIC_API_PORT}/books/update/${isbn}`,
