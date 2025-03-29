@@ -17,7 +17,7 @@ export default function BookListPage() {
   const fetchBooks = async () => {
     try {
       const response = await fetch(
-        `http://${process.env.NEXT_PUBLIC_API_URL}:${process.env.NEXT_PUBLIC_API_PORT}/books`,
+        `/api/books`, // Use relative path to leverage the ALB
         { cache: 'no-store' }
       );
       if (!response.ok) {
