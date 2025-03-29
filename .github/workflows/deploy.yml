@@ -21,7 +21,7 @@ jobs:
       - name: Build, tag, and push backend image
         env:
           ECR_REGISTRY: ${{ steps.login-ecr.outputs.registry }}
-          ECR_REPOSITORY: reading-nook-backend
+          ECR_REPOSITORY: reading_back
           IMAGE_TAG: ${{ github.sha }}
         run: |
           cd inft3200-backend-main
@@ -30,7 +30,7 @@ jobs:
       - name: Build, tag, and push frontend image
         env:
           ECR_REGISTRY: ${{ steps.login-ecr.outputs.registry }}
-          ECR_REPOSITORY: reading-nook-frontend
+          ECR_REPOSITORY: reading_front
           IMAGE_TAG: ${{ github.sha }}
         run: |
           cd inft3200-frontend-main
