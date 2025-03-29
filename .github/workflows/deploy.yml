@@ -38,5 +38,5 @@ jobs:
           docker push $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG
       - name: Update ECS services
         run: |
-          aws ecs update-service --cluster reading-nook-cluster --service backend-service --force-new-deployment
-          aws ecs update-service --cluster reading-nook-cluster --service frontend-service --force-new-deployment
+          aws ecs update-service --cluster reading_cluster --service backend-service --force-new-deployment
+          aws ecs update-service --cluster reading_cluster --service frontend-service --force-new-deployment
