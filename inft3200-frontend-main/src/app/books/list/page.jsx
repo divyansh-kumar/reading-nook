@@ -4,7 +4,7 @@ import BookList from './BookList';
 
 export default async function BookListPage() {
 
-  const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/booksq`, {
+  const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/books`, {
 
     cache: 'no-store',
   });
