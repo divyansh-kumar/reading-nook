@@ -44,22 +44,6 @@ jobs:
           cd inft3200-frontend-main
           docker buildx build --platform linux/amd64 -t $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG --no-cache --push .
 
-      - name: Check and create backend service if necessary
-        run: |
-          SERVICE_STATUS=$(aws ecs describe-services --cluster reading_cluster --services backend-service --query 'services[0].status' --output text 2>/dev/null || echo "MISSING")
-          if [ "$SERVICE_STATUS" != "ACTIVE" ]; then
-            echo "Creating backend-service..."
-            aws ecs create-service --cluster reading_cluster \
-              --service-name backend-service \
-              --task-definition backend-task \
-              --desired-count 1 \
-              --launch-type FARGATE \
-              --network-configuration "awsvpcConfiguration={subnets=[subnet-0f79a8bc2b68a5059],securityGroups=[sg-0246d4745db4d12b4],assignPublicIp=ENABLED}" \
-              --load-balancers "containerName=backend,containerPort=8080,targetGroupArn=arn:aws:elasticloadbalancing:us-east-1:856297302853:targetgroup/backend-tg/56c1481471c3b073"
-
-          else
-            echo "backend-service is already active."
-          fi
 
       - name: Check and create frontend service if necessary
         run: |
@@ -79,7 +63,6 @@ jobs:
 
       - name: Update ECS services
         run: |
-          aws ecs update-service --cluster reading_cluster --service backend-service --force-new-deployment
           aws ecs update-service --cluster reading_cluster --service frontend-service --force-new-deployment
 
 
