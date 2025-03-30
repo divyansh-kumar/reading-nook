@@ -24,7 +24,7 @@ def get_db_connection():
     return conn """
 
     conn = psycopg2.connect(
-        host='database-1.czqii6ueqeu1.us-east-1.rds.amazonaws.com',
+        host='localhost',
         database='postgres',
         user='postgres',
         password='![D9|Aru?U.asN#pNe6vsUzqjSM1'
