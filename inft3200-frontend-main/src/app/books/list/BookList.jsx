@@ -17,7 +17,7 @@ export default function BookListPage() {
   const fetchBooks = async () => {
     try {
       const response = await fetch(
-        `http://${process.env.NEXT_PUBLIC_API_URL}:${process.env.NEXT_PUBLIC_API_PORT}/books`,
+        `http://${process.env.NEXT_PUBLIC_API_URL}/books`,
         { cache: 'no-store' }
       );
       if (!response.ok) {
@@ -54,7 +54,7 @@ export default function BookListPage() {
  
     try {
       const response = await fetch(
-        `http://${process.env.NEXT_PUBLIC_API_URL}:${process.env.NEXT_PUBLIC_API_PORT}/books/update/${isbn}`,
+        `http://${process.env.NEXT_PUBLIC_API_URL}/books/update/${isbn}`,
         {
           method: 'PUT',
           headers: { 'Content-Type': 'application/json' },
