@@ -17,7 +17,7 @@ export default function BookListPage() {
   const fetchBooks = async () => {
     try {
       const response = await fetch(
-        `http://${process.env.NEXT_PUBLIC_API_URL}/bookss`,
+        `http://${process.env.NEXT_PUBLIC_API_URL}/booksv`,
         { cache: 'no-store' }
       );
       if (!response.ok) {
