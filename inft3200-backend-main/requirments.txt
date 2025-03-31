@@ -5,3 +5,4 @@ psycopg2
 boto3
 waitress
 python-dotenv
+boto3
