@@ -81,5 +81,6 @@ jobs:
         run: |
           aws ecs update-service --cluster reading_cluster --service backend-service --force-new-deployment
           aws ecs update-service --cluster reading_cluster --service frontend-service --force-new-deployment
+          
 
 
