@@ -23,11 +23,11 @@ def get_db_connection():
     )
     return conn 
 
-@app.route('/', methods=['GET'])
+@app.route('/api', methods=['GET'])
 def welcome():
     return "Welcome to the INFT3200 API"
     
-@app.route('/books/<int:isbn>', methods=['GET'])
+@app.route('/api/books/<int:isbn>', methods=['GET'])
 def get_book(isbn):
     """
     Retrieve a single book by ISBN.
@@ -50,7 +50,7 @@ def get_book(isbn):
         cursor.close()
         conn.close()
 
-@app.route('/books/update/<int:isbn>', methods=['PUT'])
+@app.route('/api/books/update/<int:isbn>', methods=['PUT'])
 def update_book(isbn):
     data = request.get_json()
     if not data:
@@ -104,7 +104,7 @@ def update_book(isbn):
         cursor.close()
         conn.close()
 
-@app.route('/books/delete/<int:isbn>', methods=['DELETE'])
+@app.route('/api/books/delete/<int:isbn>', methods=['DELETE'])
 def delete_book(isbn):
     conn = get_db_connection()
     cursor = conn.cursor()
@@ -121,7 +121,7 @@ def delete_book(isbn):
         cursor.close()
         conn.close()
 
-@app.route('/books', methods=['GET'])
+@app.route('/api/books', methods=['GET'])
 def get_all_books():
     conn = get_db_connection()
     cursor = conn.cursor(cursor_factory=psycopg2.extras.DictCursor)
@@ -137,7 +137,7 @@ def get_all_books():
         cursor.close()
         conn.close()
 
-@app.route('/books/add', methods=['POST'])
+@app.route('/api/books/add', methods=['POST'])
 def add_book():
     data = request.get_json()
     if not data:
