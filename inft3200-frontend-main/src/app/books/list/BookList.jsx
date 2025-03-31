@@ -17,7 +17,7 @@ export default function BookListPage() {
   const fetchBooks = async () => {
     try {
       const response = await fetch(
-        `http://${process.env.NEXT_PUBLIC_API_URL}:${process.env.NEXT_PUBLIC_API_PORT}/api/books`,
+        `http://${process.env.NEXT_PUBLIC_API_URL}/api/books`,
         { cache: 'no-store' }
       );
       if (!response.ok) {
@@ -54,7 +54,7 @@ export default function BookListPage() {
  
     try {
       const response = await fetch(
-        `http://${process.env.NEXT_PUBLIC_API_URL}:${process.env.NEXT_PUBLIC_API_PORT}/api/books/update/${isbn}`,
+        `http://${process.env.NEXT_PUBLIC_API_URL}/api/books/update/${isbn}`,
         {
           method: 'PUT',
           headers: { 'Content-Type': 'application/json' },
@@ -77,7 +77,7 @@ export default function BookListPage() {
   const handleDeleteClick = async (isbn) => {
     try {
       const response = await fetch(
-        `http://${process.env.NEXT_PUBLIC_API_URL}:${process.env.NEXT_PUBLIC_API_PORT}/api/books/delete/${isbn}`,
+        `http://${process.env.NEXT_PUBLIC_API_URL}/api/books/delete/${isbn}`,
         { method: 'DELETE' }
       );
       if (!response.ok) {
@@ -120,7 +120,7 @@ export default function BookListPage() {
 
     try {
       const response = await fetch(
-        `http://${process.env.NEXT_PUBLIC_API_URL}:${process.env.NEXT_PUBLIC_API_PORT}/api/books/add`,
+        `http://${process.env.NEXT_PUBLIC_API_URL}/api/books/add`,
         {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
