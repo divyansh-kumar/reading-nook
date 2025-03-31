@@ -54,7 +54,7 @@ jobs:
               --task-definition backend-task \
               --desired-count 1 \
               --launch-type FARGATE \
-              --network-configuration "awsvpcConfiguration={subnets=[subnet-0f79a8bc2b68a5059],securityGroups=[sg-0246d4745db4d12b4],assignPublicIp=ENABLED}" \
+              --network-configuration "awsvpcConfiguration={subnets=[subnet-0f79a8bc2b68a5059,subnet-02db8b81de0495592],securityGroups=[sg-0246d4745db4d12b4],assignPublicIp=ENABLED}" \
               --load-balancers "containerName=backend,containerPort=8080,targetGroupArn=arn:aws:elasticloadbalancing:us-east-1:856297302853:targetgroup/backend-tg/56c1481471c3b073"
 
           else
@@ -71,7 +71,7 @@ jobs:
               --task-definition frontend-task \
               --desired-count 1 \
               --launch-type FARGATE \
-              --network-configuration "awsvpcConfiguration={subnets=[subnet-0f79a8bc2b68a5059],securityGroups=[sg-0246d4745db4d12b4],assignPublicIp=ENABLED}" \
+              --network-configuration "awsvpcConfiguration={subnets=[subnet-0f79a8bc2b68a5059,subnet-02db8b81de0495592],securityGroups=[sg-0246d4745db4d12b4],assignPublicIp=ENABLED}" \
               --load-balancers "containerName=backend,containerPort=3000,targetGroupArn=arn:aws:elasticloadbalancing:us-east-1:856297302853:targetgroup/frontend-tg/9469bbe50b49f54c"
           else
             echo "frontend-service is already active."
