@@ -2,7 +2,7 @@ import React from 'react';
 
 export default async function BookReadOnlyPage() {
   const response = await fetch(
-    `http://${process.env.NEXT_PUBLIC_API_URL}:${process.env.NEXT_PUBLIC_API_PORT}/books`,
+    `http://${process.env.NEXT_PUBLIC_API_URL}/books`,
     { cache: 'no-store' }
   );
   if (!response.ok) {
